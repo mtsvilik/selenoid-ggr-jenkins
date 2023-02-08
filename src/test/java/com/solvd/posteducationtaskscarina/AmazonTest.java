@@ -3,16 +3,19 @@ package com.solvd.posteducationtaskscarina;
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.solvd.posteducationtaskscarina.component.SearchElement;
 import com.solvd.posteducationtaskscarina.page.*;
+import com.solvd.posteducationtaskscarina.service.CapabilityFactory;
 import com.zebrunner.carina.utils.R;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class AmazonTest implements IAbstractTest {
 
     @Test
-    public void verifySearchResultsTest() {
-        HomePage homePage = new HomePage(getDriver());
+    @Parameters({"browserName"})
+    public void verifySearchResultsTest(String browserName) {
+        HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
         homePage.open();
 
         SearchElement searchElement = homePage.getSearchElement();
@@ -29,8 +32,9 @@ public class AmazonTest implements IAbstractTest {
     }
 
     @Test
-    public void verifySignInTest() {
-        HomePage homePage = new HomePage(getDriver());
+    @Parameters({"browserName"})
+    public void verifySignInTest(String browserName) {
+        HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
         homePage.open();
 
         SignInPage signInPage = homePage.clickSignInButton();
@@ -41,8 +45,9 @@ public class AmazonTest implements IAbstractTest {
     }
 
     @Test
-    public void checkSignInNonExistentEmailTest() {
-        HomePage homePage = new HomePage(getDriver());
+    @Parameters({"browserName"})
+    public void checkSignInNonExistentEmailTest(String browserName) {
+        HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
         homePage.open();
 
         SignInPage signInPage = homePage.clickSignInButton();
@@ -52,8 +57,9 @@ public class AmazonTest implements IAbstractTest {
     }
 
     @Test
-    public void checkAddCartButtonIsClickableTest() {
-        HomePage homePage = new HomePage(getDriver());
+    @Parameters({"browserName"})
+    public void checkAddCartButtonIsClickableTest(String browserName) {
+        HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
         homePage.open();
 
         ShoppingCartPage shoppingCartPage = homePage.clickShoppingCartButton();
@@ -62,8 +68,9 @@ public class AmazonTest implements IAbstractTest {
     }
 
     @Test
-    public void verifyProductIsAddedToCartTest() {
-        HomePage homePage = new HomePage(getDriver());
+    @Parameters({"browserName"})
+    public void verifyProductIsAddedToCartTest(String browserName) {
+        HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
         homePage.open();
 
         SearchResultPage searchResultPage = homePage.openResultPage(R.TESTDATA.get("searchText"));
@@ -77,8 +84,9 @@ public class AmazonTest implements IAbstractTest {
     }
 
     @Test
-    public void checkIncreaseProductInCartTest() {
-        HomePage homePage = new HomePage(getDriver());
+    @Parameters({"browserName"})
+    public void checkIncreaseProductInCartTest(String browserName) {
+        HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
         homePage.open();
 
         SearchResultPage searchResultPage = homePage.openResultPage(R.TESTDATA.get("searchText"));

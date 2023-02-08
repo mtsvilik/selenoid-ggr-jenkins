@@ -5,21 +5,30 @@ services:
     network_mode: bridge
     image: aerokube/selenoid:latest-release
     volumes:
-      - "/Users/solvd/MavenProjects/selenoid:/etc/selenoid"
+      - "${PATH_TO_SELENOID}:/etc/selenoid"
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/Users/solvd/MavenProjects/selenoid/video:/opt/selenoid/video"
-      - "/Users/solvd/MavenProjects/selenoid/logs:/opt/selenoid/logs"
+      - "${PATH_TO_SELENOID}/video:/opt/selenoid/video"
+      - "${PATH_TO_SELENOID}/logs:/opt/selenoid/logs"
     environment:
-      - OVERRIDE_VIDEO_OUTPUT_DIR=/Users/solvd/MavenProjects/selenoid/video
+      - OVERRIDE_VIDEO_OUTPUT_DIR=${PATH_TO_SELENOID}/video
     command: [ "-conf", "/etc/selenoid/browsers.json", "-video-output-dir", "/opt/selenoid/video", "-log-output-dir", "/opt/selenoid/logs" ]
     ports:
-      - "4444:4444"
+      - "4445:4444"
 
   selenoid-ui:
-    image: "aerokube/selenoid-ui"
+    image: aerokube/selenoid-ui:latest-release
     network_mode: bridge
     links:
       - selenoid
     ports:
       - "8080:8080"
     command: [ "--selenoid-uri", "http://selenoid:4444" ]
+
+  ggr:
+    image: aerokube/ggr:latest-release
+    volumes:
+      - "${PATH_TO_QUOTA}:/etc/grid-router:ro"
+    links:
+      - selenoid
+    ports:
+      - "4444:4444"
