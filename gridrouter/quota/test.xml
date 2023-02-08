@@ -6,13 +6,6 @@
             </region>
         </version>
     </browser>
-<!--    <browser name="firefox" defaultVersion="108.0">-->
-<!--        <version number="108.0">-->
-<!--            <region name="1">-->
-<!--                <host name="selenoid.example.com" port="4444" count="1"/>-->
-<!--            </region>-->
-<!--        </version>-->
-<!--    </browser>-->
     <browser name="chrome" defaultVersion="100.0">
         <version number="100.0">
             <region name="1">
