@@ -40,7 +40,7 @@
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>
-                            ${project.build.directory}/test-classes/testng_suites/amazon-suite.xml
+                            ${project.build.directory}/test-classes/amazon-suite.xml
                         </suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
