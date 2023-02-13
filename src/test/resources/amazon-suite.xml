@@ -2,6 +2,11 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="carina-suite">
+
+    <parameter name="jenkinsJobName" value="web-tests"/>
+    <parameter name="jenkinsJobType" value="web"/>
+    <parameter name="jenkinsEnvironments" value="SUITE"/>
+
     <test name="chrome-test" parallel="methods" thread-count="2">
         <parameter name="browserName" value="chrome"/>
         <classes>
