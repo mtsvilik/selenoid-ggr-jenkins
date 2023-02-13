@@ -39,7 +39,9 @@
                 <version>${maven-surefire-plugin-version}</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${project.build.directory}/test-classes/amazon-suite.xml</suiteXmlFile>
+                        <suiteXmlFile>
+                            ${project.build.directory}/test-classes/testng_suites/${suite}.xml
+                        </suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
