@@ -6,6 +6,7 @@
     <parameter name="jenkinsJobName" value="web-tests"/>
     <parameter name="jenkinsJobType" value="web"/>
     <parameter name="jenkinsEnvironments" value="SUITE"/>
+    <parameter name="scheduling" value="H 2 * * *" />
 
     <test name="chrome-test" parallel="methods" thread-count="2">
         <parameter name="browserName" value="chrome"/>
