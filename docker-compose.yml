@@ -15,14 +15,14 @@ services:
     ports:
       - "4445:4444"
 
-  selenoid-ui:
-    image: aerokube/selenoid-ui:latest-release
-    network_mode: bridge
-    links:
-      - selenoid
-    ports:
-      - "8080:8080"
-    command: [ "--selenoid-uri", "http://selenoid:4444" ]
+#  selenoid-ui:
+#    image: aerokube/selenoid-ui:latest-release
+#    network_mode: bridge
+#    links:
+#      - selenoid
+#    ports:
+#      - "8080:8080"
+#    command: [ "--selenoid-uri", "http://selenoid:4444" ]
 
   ggr:
     image: aerokube/ggr:latest-release
