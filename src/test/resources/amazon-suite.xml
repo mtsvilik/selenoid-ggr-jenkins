@@ -7,18 +7,18 @@
     <parameter name="jenkinsJobType" value="web"/>
     <parameter name="jenkinsEnvironments" value="DEMO"/>
 
-    <test name="chrome-test">
-        <parameter name="browserName" value="chrome"/>
-        <classes>
-            <class name="com.solvd.posteducationtaskscarina.AmazonTest">
-            </class>
-        </classes>
-    </test>
-<!--    <test name="firefox-test" parallel="methods" thread-count="2">-->
-<!--        <parameter name="browserName" value="firefox"/>-->
+<!--    <test name="chrome-test">-->
+<!--        <parameter name="browserName" value="chrome"/>-->
 <!--        <classes>-->
 <!--            <class name="com.solvd.posteducationtaskscarina.AmazonTest">-->
 <!--            </class>-->
 <!--        </classes>-->
 <!--    </test>-->
+    <test name="firefox-test">
+        <parameter name="browserName" value="firefox"/>
+        <classes>
+            <class name="com.solvd.posteducationtaskscarina.AmazonTest">
+            </class>
+        </classes>
+    </test>
 </suite>
