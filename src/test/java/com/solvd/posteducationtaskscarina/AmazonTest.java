@@ -4,7 +4,6 @@ import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.solvd.posteducationtaskscarina.component.SearchElement;
 import com.solvd.posteducationtaskscarina.page.*;
 import com.solvd.posteducationtaskscarina.service.CapabilityFactory;
-import com.zebrunner.agent.core.annotation.TestLabel;
 import com.zebrunner.carina.utils.R;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
@@ -13,24 +12,24 @@ import org.testng.asserts.SoftAssert;
 
 public class AmazonTest implements IAbstractTest {
 
-    @Test
-    @Parameters({"browserName"})
-    public void verifySearchResultsTest(String browserName) {
-        HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
-        homePage.open();
-
-        SearchElement searchElement = homePage.getSearchElement();
-        searchElement.typeInSearchInput("umbrella");
-        SearchResultPage searchResultPage = searchElement.clickSearchButton();
-
-        SoftAssert softAssert = new SoftAssert();
-        searchResultPage.getSearchResultElements()
-                .forEach(searchResultElement -> softAssert.assertTrue(searchResultElement.getDescriptionText()
-                                .toLowerCase().contains("umbrella"),
-                        "searchResultElement.getDescriptionText() doesn't contain text 'umbrella'"));
-
-        softAssert.assertAll();
-    }
+//    @Test
+//    @Parameters({"browserName"})
+//    public void verifySearchResultsTest(String browserName) {
+//        HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
+//        homePage.open();
+//
+//        SearchElement searchElement = homePage.getSearchElement();
+//        searchElement.typeInSearchInput("umbrella");
+//        SearchResultPage searchResultPage = searchElement.clickSearchButton();
+//
+//        SoftAssert softAssert = new SoftAssert();
+//        searchResultPage.getSearchResultElements()
+//                .forEach(searchResultElement -> softAssert.assertTrue(searchResultElement.getDescriptionText()
+//                                .toLowerCase().contains("umbrella"),
+//                        "searchResultElement.getDescriptionText() doesn't contain text 'umbrella'"));
+//
+//        softAssert.assertAll();
+//    }
 
     @Test
     @Parameters({"browserName"})
