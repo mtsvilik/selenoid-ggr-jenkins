@@ -8,16 +8,16 @@
 
     <parameter name="provider" value="selenium"/>
 
-<!--    <parameter name="jenkinsRegressionPipeline" value="web_regression, full_regression"/>-->
-<!--    <parameter name="jenkinsRegressionMatrix_full_regression" value="browser:chrome; browser:firefox"/>-->
+    <parameter name="jenkinsRegressionPipeline" value="web_regression, full_regression"/>
+    <parameter name="jenkinsRegressionMatrix_full_regression" value="browser:chrome; browser:firefox"/>
 
-<!--    <test name="chrome-test">-->
-<!--        <parameter name="browserName" value="chrome"/>-->
-<!--        <classes>-->
-<!--            <class name="com.solvd.posteducationtaskscarina.AmazonTest">-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="chrome-test">
+        <parameter name="browserName" value="chrome"/>
+        <classes>
+            <class name="com.solvd.posteducationtaskscarina.AmazonTest">
+            </class>
+        </classes>
+    </test>
     <test name="firefox-test">
         <parameter name="browserName" value="firefox"/>
         <classes>
