@@ -2,17 +2,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
+    <modelVersion>4.0.0</modelVersion>
     <groupId>com.solvd</groupId>
     <artifactId>post-education-tasks-carina</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>Carina Web Tests Project</name>
+    <url>https://github.com/mtsvilik/selenoid-ggr-jenkins</url>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <carina-core-version>8.0.5</carina-core-version>
-        <maven-compiler-plugin-version>3.10.1</maven-compiler-plugin-version>
-        <maven-surefire-plugin-version>3.0.0-M7</maven-surefire-plugin-version>
-        <suite>amazon-suite.xml</suite>
+        <carina-aws-s3.version>1.0.1</carina-aws-s3.version>
+        <slf4j-version>2.0.5</slf4j-version>
+        <log4j-version>2.17.1</log4j-version>
+        <java.version>11</java.version>
+        <zebrunner-agent.version>1.9.3</zebrunner-agent.version>
+        <suite>amazon-suite</suite>
     </properties>
 
     <dependencies>
@@ -21,6 +28,45 @@
             <artifactId>carina-core</artifactId>
             <version>${carina-core-version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.zebrunner</groupId>
+            <artifactId>carina-aws-s3</artifactId>
+            <version>${carina-aws-s3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+        <!-- Log4j2 -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.17.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.17.1</version>
+        </dependency>
+
+        <dependency>
+            <!--we need it to reuse benefits of zebrunner testng agent for webdriver
+                sesssion(s) declaration -->
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.12.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.3.3</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -28,19 +74,48 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin-version}</version>
+                <version>3.10.1</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <release>${java.version}</release>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <artifactItems>
+                        <artifactItem>
+                            <groupId>com.zebrunner</groupId>
+                            <artifactId>agent-core</artifactId>
+                            <version>${zebrunner-agent.version}</version>
+                            <outputDirectory>${project.build.directory}/agent</outputDirectory>
+                            <destFileName>zebrunner-agent.jar</destFileName>
+                        </artifactItem>
+                    </artifactItems>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin-version}</version>
+                <version>3.0.0-M6</version>
                 <configuration>
+                    <argLine>-javaagent:${project.build.directory}/agent/zebrunner-agent.jar</argLine>
+                    <useSystemClassLoader>false</useSystemClassLoader>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${project.build.directory}/test-classes/${suite}</suiteXmlFile>
+                        <suiteXmlFile>${project.build.directory}/test-classes/testng-suites/${suite}.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
