@@ -32,7 +32,7 @@ public class LocationElement extends AbstractUIObject implements IMobileUtils {
         locationButton.click();
         ExtendedWebElement chooseYourLocationWindow = getChooseYourLocationWindow();
         if (chooseYourLocationWindow.isElementPresent()) {
-            tap(location);
+            location.click();
             country.scrollTo();
             country.click();
             doneButton.click();
