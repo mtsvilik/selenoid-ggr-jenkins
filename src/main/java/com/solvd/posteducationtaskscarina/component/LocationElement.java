@@ -15,7 +15,7 @@ public class LocationElement extends AbstractUIObject implements IMobileUtils {
     @FindBy(css = ".a-popover-wrapper")
     private ExtendedWebElement chooseYourLocationWindow;
 
-    @FindBy(id = "GLUXCountryValue")
+    @FindBy(xpath = "//span[@class='a-button-inner']//*[@id='GLUXCountryValue']")
     private ExtendedWebElement location;
 
     @FindBy(id = "GLUXCountryList_178")
@@ -30,13 +30,13 @@ public class LocationElement extends AbstractUIObject implements IMobileUtils {
 
     public void chooseLocation() {
         locationButton.click();
-        ExtendedWebElement chooseYourLocationWindow = getChooseYourLocationWindow();
-        if (chooseYourLocationWindow.isElementPresent()) {
+//        ExtendedWebElement chooseYourLocationWindow = getChooseYourLocationWindow();
+//        if (chooseYourLocationWindow.isElementPresent()) {
             location.click();
             country.scrollTo();
             country.click();
             doneButton.click();
-        }
+//        }
     }
 
     public ExtendedWebElement getChooseYourLocationWindow() {
