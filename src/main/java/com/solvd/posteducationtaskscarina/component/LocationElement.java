@@ -15,7 +15,7 @@ public class LocationElement extends AbstractUIObject implements IMobileUtils {
     @FindBy(css = ".a-popover-wrapper")
     private ExtendedWebElement chooseYourLocationWindow;
 
-    @FindBy(xpath = "//*[contains(@class, 'a-button-text') and contains(@class, 'a-declarative')]")
+    @FindBy(xpath = "//*[contains(@class, 'a-icon') and contains(@class, 'a-icon-dropdown')]")
     private ExtendedWebElement location;
 
     @FindBy(id = "GLUXCountryList_178")
