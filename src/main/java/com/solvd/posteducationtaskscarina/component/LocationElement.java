@@ -8,14 +8,34 @@ import org.openqa.selenium.support.FindBy;
 
 public class LocationElement extends AbstractUIObject {
 
-    @FindBy(xpath = ".//*[@data-action-type='DISMISS']")
-    private ExtendedWebElement dismissButton;
+    @FindBy(css = "#nav-global-location-popover-link")
+    private ExtendedWebElement locationButton;
+
+    @FindBy(css=".a-popover-wrapper")
+    private ExtendedWebElement chooseYourLocationWindow;
+
+    @FindBy(css="#GLUXCountryValue")
+    private ExtendedWebElement location;
+
+    @FindBy(xpath = "//*[@name='glowDoneButton']")
+    private ExtendedWebElement doneButton;
 
     public LocationElement(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
-    public void clickDismissButton() {
-        dismissButton.click();
+    public void chooseLocation() {
+        locationButton.click();
+        ExtendedWebElement chooseYourLocationWindow = getChooseYourLocationWindow();
+        if(chooseYourLocationWindow.isElementPresent()){
+            String country = "Poland";
+            location.click();
+            location.type(country);
+            doneButton.click();
+        }
+    }
+
+    public ExtendedWebElement getChooseYourLocationWindow() {
+        return chooseYourLocationWindow;
     }
 }

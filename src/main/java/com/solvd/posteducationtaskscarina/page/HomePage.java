@@ -32,14 +32,12 @@ public class HomePage extends AbstractPage {
     @Override
     public void open() {
         super.open();
-        closeLocationElementIfNeed();
+        chooseYourLocation();
     }
 
-    private void closeLocationElementIfNeed() {
+    private void chooseYourLocation() {
         LocationElement locationElement = getLocationElement();
-        if (locationElement.isUIObjectPresent()) {
-            locationElement.clickDismissButton();
-        }
+        locationElement.chooseLocation();
     }
 
     public SearchResultPage openResultPage(String searchText) {
