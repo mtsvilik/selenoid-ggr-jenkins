@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class LocationElement extends AbstractUIObject {
 
-    @FindBy(id = "nav-global-location-data-modal-action")
+    @FindBy(id = "nav-packard-glow-loc-icon")
     private ExtendedWebElement locationButton;
 
     @FindBy(css = ".a-popover-wrapper")

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends AbstractPage {
 
-    @FindBy(id = "nav-search-bar-form")
+    @FindBy(id = "nav-packard-glow-loc-icon")
     private SearchElement searchElement;
 
     @FindBy(id = "nav-global-location-data-modal-action")
