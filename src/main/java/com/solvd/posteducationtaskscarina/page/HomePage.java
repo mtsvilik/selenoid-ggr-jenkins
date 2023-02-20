@@ -12,7 +12,7 @@ public class HomePage extends AbstractPage {
     @FindBy(id = "nav-search-bar-form")
     private SearchElement searchElement;
 
-    @FindBy(css = "#nav-global-location-slot")
+    @FindBy(id = "nav-global-location-data-modal-action")
     private LocationElement locationElement;
 
     @FindBy(css = "[data-nav-ref='nav_ya_signin']")
