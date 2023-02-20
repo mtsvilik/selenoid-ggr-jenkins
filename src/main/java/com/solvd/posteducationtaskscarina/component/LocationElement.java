@@ -14,7 +14,7 @@ public class LocationElement extends AbstractUIObject {
     @FindBy(css = ".a-popover-wrapper")
     private ExtendedWebElement chooseYourLocationWindow;
 
-    @FindBy(css = "#GLUXCountryValue")
+    @FindBy(css = ".a-dropdown-container")
     private ExtendedWebElement location;
 
     @FindBy(xpath = "//*[@name='glowDoneButton']")
