@@ -34,10 +34,10 @@ public class LocationElement extends AbstractUIObject implements IMobileUtils {
 //        if (chooseYourLocationWindow.isElementPresent()) {
 
         WebElement location = driver
-                .findElement(By.xpath("//*[contains(@class, 'a-icon') and contains(@class, 'a-icon-dropdown')]"));
+                .findElement(By.xpath("//*[contains(@class, 'a-button-text') and contains(@class, 'a-declarative')]"));
         Actions actions = new Actions(driver);
         actions.moveToElement(location).click().build().perform();
-        location.click();
+//        location.click();
         country.scrollTo();
         country.click();
         doneButton.click();
