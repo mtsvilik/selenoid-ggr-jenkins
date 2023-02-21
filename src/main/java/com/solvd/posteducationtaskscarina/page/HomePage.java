@@ -12,7 +12,7 @@ public class HomePage extends AbstractPage {
     @FindBy(id = "nav-search-bar-form")
     private SearchElement searchElement;
 
-    @FindBy(xpath = "//*[@data-toaster-type='AIS_INGRESS']")
+    @FindBy(id = "nav-global-location-popover-link")
     private LocationElement locationElement;
 
     @FindBy(css = "[data-nav-ref='nav_ya_signin']")
@@ -32,14 +32,12 @@ public class HomePage extends AbstractPage {
     @Override
     public void open() {
         super.open();
-        closeLocationElementIfNeed();
+        chooseYourLocation();
     }
 
-    private void closeLocationElementIfNeed() {
+    private void chooseYourLocation() {
         LocationElement locationElement = getLocationElement();
-        if (locationElement.isUIObjectPresent()) {
-            locationElement.clickDismissButton();
-        }
+        locationElement.chooseLocation();
     }
 
     public SearchResultPage openResultPage(String searchText) {
