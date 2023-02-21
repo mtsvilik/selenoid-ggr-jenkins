@@ -9,10 +9,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends AbstractPage {
 
-    @FindBy(id = "nav-packard-glow-loc-icon")
+    @FindBy(id = "nav-search-bar-form")
     private SearchElement searchElement;
 
-    @FindBy(id = "nav-global-location-data-modal-action")
+    @FindBy(xpath = "//*[@data-toaster-type='AIS_INGRESS']")
     private LocationElement locationElement;
 
     @FindBy(css = "[data-nav-ref='nav_ya_signin']")
@@ -32,12 +32,14 @@ public class HomePage extends AbstractPage {
     @Override
     public void open() {
         super.open();
-        chooseYourLocation();
+        closeLocationElementIfNeed();
     }
 
-    private void chooseYourLocation() {
+    private void closeLocationElementIfNeed() {
         LocationElement locationElement = getLocationElement();
-        locationElement.chooseLocation();
+        if (locationElement.isUIObjectPresent()) {
+            locationElement.clickDismissButton();
+        }
     }
 
     public SearchResultPage openResultPage(String searchText) {
