@@ -37,6 +37,7 @@ public class LocationElement extends AbstractUIObject implements IMobileUtils {
                 .findElement(By.xpath("//*[contains(@class, 'a-icon') and contains(@class, 'a-icon-dropdown')]"));
         Actions actions = new Actions(driver);
         actions.moveToElement(location).click().build().perform();
+        location.click();
         country.scrollTo();
         country.click();
         doneButton.click();
