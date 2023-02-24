@@ -20,7 +20,8 @@ public class AmazonTest implements IAbstractTest {
         TestRail.setSuiteId("S188");
     }
 
-    @Test(enabled = false)
+    @Test
+    @TestRailCaseId("S3543")
     @Parameters({"browserName"})
     public void verifySearchResultsTest(String browserName) {
         HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
@@ -95,8 +96,7 @@ public class AmazonTest implements IAbstractTest {
                 "Product in shopping cart with incorrect title");
     }
 
-    @Test
-    @TestRailCaseId("C3540")
+    @Test(enabled = false)
     @Parameters({"browserName"})
     public void checkIncreaseProductInCartTest(String browserName) {
         HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
