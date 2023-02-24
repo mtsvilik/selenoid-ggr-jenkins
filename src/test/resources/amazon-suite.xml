@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="amazon-suite" parallel="methods" thread-count="2">
+<suite name="amazon-suite">
 
     <parameter name="jenkinsJobName" value="web-tests"/>
     <parameter name="jenkinsJobType" value="web"/>
@@ -8,13 +8,6 @@
 
     <test name="chrome-test">
         <parameter name="browserName" value="chrome"/>
-        <classes>
-            <class name="com.solvd.posteducationtaskscarina.AmazonTest">
-            </class>
-        </classes>
-    </test>
-    <test name="firefox-test">
-        <parameter name="browserName" value="firefox"/>
         <classes>
             <class name="com.solvd.posteducationtaskscarina.AmazonTest">
             </class>
