@@ -4,15 +4,23 @@ import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.solvd.posteducationtaskscarina.component.SearchElement;
 import com.solvd.posteducationtaskscarina.page.*;
 import com.solvd.posteducationtaskscarina.service.CapabilityFactory;
+import com.zebrunner.agent.core.annotation.TestRailCaseId;
+import com.zebrunner.agent.core.registrar.TestRail;
 import com.zebrunner.carina.utils.R;
 import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class AmazonTest implements IAbstractTest {
 
-    @Test
+    @BeforeSuite
+    public void setUp() {
+        TestRail.setSuiteId("S188");
+    }
+
+    @Test(enabled = false)
     @Parameters({"browserName"})
     public void verifySearchResultsTest(String browserName) {
         HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
@@ -32,6 +40,7 @@ public class AmazonTest implements IAbstractTest {
     }
 
     @Test
+    @TestRailCaseId("C3536")
     @Parameters({"browserName"})
     public void verifySignInTest(String browserName) {
         HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
@@ -45,6 +54,7 @@ public class AmazonTest implements IAbstractTest {
     }
 
     @Test
+    @TestRailCaseId("C3537")
     @Parameters({"browserName"})
     public void checkSignInNonExistentEmailTest(String browserName) {
         HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
@@ -57,6 +67,7 @@ public class AmazonTest implements IAbstractTest {
     }
 
     @Test
+    @TestRailCaseId("C3538")
     @Parameters({"browserName"})
     public void checkAddCartButtonIsClickableTest(String browserName) {
         HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
@@ -68,6 +79,7 @@ public class AmazonTest implements IAbstractTest {
     }
 
     @Test
+    @TestRailCaseId("C3539")
     @Parameters({"browserName"})
     public void verifyProductIsAddedToCartTest(String browserName) {
         HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
@@ -84,6 +96,7 @@ public class AmazonTest implements IAbstractTest {
     }
 
     @Test
+    @TestRailCaseId("C3540")
     @Parameters({"browserName"})
     public void checkIncreaseProductInCartTest(String browserName) {
         HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
