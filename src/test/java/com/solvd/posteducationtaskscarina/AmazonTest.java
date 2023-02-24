@@ -21,7 +21,7 @@ public class AmazonTest implements IAbstractTest {
     }
 
     @Test
-    @TestRailCaseId("S3543")
+    @TestRailCaseId("S3544")
     @Parameters({"browserName"})
     public void verifySearchResultsTest(String browserName) {
         HomePage homePage = new HomePage(getDriver(browserName, CapabilityFactory.createCapabilities(browserName)));
